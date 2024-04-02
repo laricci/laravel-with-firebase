@@ -12,7 +12,7 @@ class UserController extends Controller
         $data = $this->connect()->getReference('users')->getSnapshot()->getValue();
 
         return view('user-list')->with([
-            'users' => $data
+            'users' => is_array($data) ? $data : []
         ]);
     }
 
@@ -27,7 +27,7 @@ class UserController extends Controller
 
         return view('user-edit')->with([
             'id'   => $id,
-            'user' => $data
+            'user' => is_array($data) ? $data : []
         ]);
     }
 

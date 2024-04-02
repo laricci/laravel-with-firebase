@@ -21,6 +21,23 @@ class EntryController extends Controller
 
     public function create($id, $tipo)
     {
+        $lastEntry = $this->connect()->getReference('users/' . $id . '/entrys/')
+            ->orderByChild('data')
+            ->limitToLast(1)
+            ->getSnapshot()
+            ->getValue();
+
+        $lastEntry = is_array($lastEntry) ? array_values($lastEntry)[0] : $lastEntry;
+        
+        if (isset($lastEntry['tipo']) && $lastEntry['tipo'] == $tipo) {
+            
+            return view('error')->with([
+                'message' => "O último registro do usuário já é '$tipo'.",
+                'backTo'  => 'user.index'
+            ]);
+
+        } 
+
         $this->connect()->getReference('users/' . $id . '/entrys/')->push([
             'data' => date('Ymd'),
             'hora' => date('H:i:s'),
