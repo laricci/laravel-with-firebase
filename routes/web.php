@@ -24,6 +24,9 @@ Route::get('/user/{id}/edit', [App\Http\Controllers\UserController::class, 'edit
 Route::post('/user/{id}/update', [App\Http\Controllers\UserController::class, 'update'])->name('user.update');
 Route::post('/user/create', [App\Http\Controllers\UserController::class, 'create'])->name('user.create');
 
+Route::get('/entry/{id}', [App\Http\Controllers\EntryController::class, 'index'])->name('entry.index');
+Route::get('/entry/{id}/{tipo}/create', [App\Http\Controllers\EntryController::class, 'create'])->name('entry.create');
+
 // Auth::routes();
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('user','fireauth');

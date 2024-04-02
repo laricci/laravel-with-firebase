@@ -19,6 +19,7 @@
                 <th>Nome</th>
                 <th>E-mail</th>
                 <th>Tipo</th>
+                <th>Controle</th>
             </thead>
             <tbody>
                 @foreach($users as $id => $user)
@@ -31,6 +32,11 @@
                     <td>{{ $user['nome'] }}</td>
                     <td>{{ $user['email'] }}</td>
                     <td>{{ $user['tipo'] }}</td>
+                    <td>
+                        <a href="{{ route('entry.create', ['id' => $id, 'tipo' => 'E']) }}">Adicionar entrada</a>
+                        <a href="{{ route('entry.create', ['id' => $id, 'tipo' => 'S']) }}">Adicionar saida</a>
+                        <a href="{{ route('entry.index' , ['id' => $id]) }}">Listar entradas</a>
+                    </td>
                 </tr>
                 @endforeach
             </tbody>

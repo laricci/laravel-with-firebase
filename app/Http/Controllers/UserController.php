@@ -3,28 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Kreait\Firebase\Factory;
-use Kreait\Firebase\Contract\Database;
 
 class UserController extends Controller
 {
-    /**
-     * Get database connection
-     * @return Database
-     */
-    public function connect()
-    {
-        $firebase = (new Factory)
-            ->withServiceAccount(base_path(env('FIREBASE_CREDENTIALS')))
-            ->withDatabaseUri(env('FIREBASE_DATABASE_URL'));
-
-        return $firebase->createDatabase();
-    }
-
-    public function show()
-    {
-
-    }
 
     public function index()
     {
@@ -72,7 +53,7 @@ class UserController extends Controller
     public function delete($id)
     {
         $this->connect()->getReference('users/' . $id)->remove();
-        
+
         return redirect()->route('user.index');
     }
 }
