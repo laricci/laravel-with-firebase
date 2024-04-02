@@ -14,6 +14,7 @@
         <a href="{{ route('user.add') }}">Adicionar usuário</a>
         <table>
             <thead>
+                <th>Opções</th>
                 <th>Usuário</th>
                 <th>Nome</th>
                 <th>E-mail</th>
@@ -22,6 +23,10 @@
             <tbody>
                 @foreach($users as $id => $user)
                 <tr>
+                    <td>
+                        <a href="{{ route('user.edit', ['id' => $id]) }}">Editar</a>
+                        <a href="{{ route('user.delete', ['id' => $id]) }}">Remover</a>
+                    </td>
                     <td>{{ $user['usuario'] }}</td>
                     <td>{{ $user['nome'] }}</td>
                     <td>{{ $user['email'] }}</td>

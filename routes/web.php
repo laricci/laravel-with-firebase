@@ -19,6 +19,9 @@ Route::get('/', function () {
 
 Route::get('/user', [App\Http\Controllers\UserController::class, 'index'])->name('user.index');
 Route::get('/user/add', [App\Http\Controllers\UserController::class, 'add'])->name('user.add');
+Route::get('/user/{id}/delete', [App\Http\Controllers\UserController::class, 'delete'])->name('user.delete');
+Route::get('/user/{id}/edit', [App\Http\Controllers\UserController::class, 'edit'])->name('user.edit');
+Route::post('/user/{id}/update', [App\Http\Controllers\UserController::class, 'update'])->name('user.update');
 Route::post('/user/create', [App\Http\Controllers\UserController::class, 'create'])->name('user.create');
 
 // Auth::routes();
