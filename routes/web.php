@@ -14,10 +14,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
 
-Route::get('/index', [App\Http\Controllers\FirebaseController::class, 'index'])->name('index');
+Route::get('/user', [App\Http\Controllers\UserController::class, 'index'])->name('user.index');
+Route::get('/user/add', [App\Http\Controllers\UserController::class, 'add'])->name('user.add');
+Route::post('/user/create', [App\Http\Controllers\UserController::class, 'create'])->name('user.create');
 
 // Auth::routes();
 
