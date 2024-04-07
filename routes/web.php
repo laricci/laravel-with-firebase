@@ -13,10 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
-
+Route::get('/', function () {return view('home');})->name('index');
 Route::get('/user', [App\Http\Controllers\UserController::class, 'index'])->name('user.index');
 Route::get('/user/add', [App\Http\Controllers\UserController::class, 'add'])->name('user.add');
 Route::get('/user/{id}/delete', [App\Http\Controllers\UserController::class, 'delete'])->name('user.delete');

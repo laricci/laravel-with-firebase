@@ -20,7 +20,7 @@
             </div>
             <div>
                 <label class="form-label" for="email">E-mail</label>
-                <input class="form-control" type="text" name="email" id="email" value="{{ $user['email'] }}">
+                <input class="form-control" type="email" name="email" id="email" value="{{ $user['email'] }}">
             </div>
             <div>
                 <label class="form-label" for="tipo">Tipo</label>

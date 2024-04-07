@@ -1,23 +1,8 @@
-@extends('layouts.app')
+@extends('layouts.template')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
-
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    {{ __('You are logged in!') }}
-                </div>
-            </div>
-        </div>
-    </div>
+<div class="d-flex flex-column align-items-center">
+     <img src="{{URL::asset('/img/univesp_logo.webp')}}" alt="Logo Univesp">
+     <h2 class="text-center w-50">Porteiro eletrônico: automatizando o controle de tráfego de alunos nos polos da Univesp</h2>
 </div>
 @endsection
