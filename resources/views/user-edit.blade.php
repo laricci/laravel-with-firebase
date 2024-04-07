@@ -1,33 +1,39 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Editar Usuário</title>
-</head>
-<body>
-    <header>
-        <h1>Editar Usuário</h1>
-    </header>
+@extends('layouts.template')
 
-    <main>
-        <a href="{{ route('user.index') }}">Voltar</a>
-        {{ Form::open(['url' => route('user.update', ['id' => $id]) ]) }}
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px 8px; width: min-content;">
-                <label for="usuario">Usuário</label>
-                <input type="text" name="usuario" id="usuario" value="{{ $user['usuario'] }}">
-                <label for="nome">Nome</label>
-                <input type="text" name="nome" id="nome" value="{{ $user['usuario'] }}">
-                <label for="email">E-mail</label>
-                <input type="text" name="email" id="email" value="{{ $user['usuario'] }}">
-                <label for="tipo">Tipo</label>
-                <input type="text" name="tipo" id="tipo" value="{{ $user['tipo'] }}" readonly>
-                <label for="data">Data</label>
-                <input type="date" name="data" id="data" value="{{ $user['data'] }}" readonly>
+@section('title')
+    Editar Usuário
+@endsection
+
+@section('content')
+    <div>
+        <a class="btn btn-secondary" href="{{ route('user.index') }}">Voltar</a>
+    </div>
+    {{ Form::open(['url' => route('user.update', ['id' => $id]) ]) }}
+        <div class="d-flex flex-column gap-3">
+            <div>
+                <label class="form-label" for="usuario">Usuário</label>
+                <input class="form-control" type="text" name="usuario" id="usuario" value="{{ $user['usuario'] }}" readonly>
             </div>
-            <button type="submit">Salvar</button>
-        {{ Form::close() }}
-    </main>
-    
-</body>
-</html>
+            <div>
+                <label class="form-label" for="nome">Nome</label>
+                <input class="form-control" type="text" name="nome" id="nome" value="{{ $user['nome'] }}">
+            </div>
+            <div>
+                <label class="form-label" for="email">E-mail</label>
+                <input class="form-control" type="text" name="email" id="email" value="{{ $user['email'] }}">
+            </div>
+            <div>
+                <label class="form-label" for="tipo">Tipo</label>
+                <input class="form-control" type="text" name="tipo" id="tipo" value="{{ $user['tipo'] }}" readonly>
+            </div>
+            <div>
+                <label class="form-label" for="data">Data</label>
+                <input class="form-control" type="date" name="data" id="data" value="{{ $user['data'] }}" readonly>
+            </div>
+            <div class="d-flex gap-3 justify-content-center">
+                <button type="submit" class="btn btn-success">Salvar</button>
+                <a class="btn btn-danger" href="{{ route('user.index') }}">Cancelar</a>
+            </div>
+        </div>
+    {{ Form::close() }}
+@endsection

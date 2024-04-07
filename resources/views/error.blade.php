@@ -1,19 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Erro</title>
-</head>
-<body>
-    <header>
-        <h1>Houve um problema: </h1>
-    </header>
+@extends('layouts.template')
 
-    <main>
-        <p>{{ $message }}</p>
-        <a href="{{ route($backTo) }}">Voltar</a>
-    </main>
-    
-</body>
-</html>
+@section('title')
+    Ops! Parece que houve algum problema...
+@endsection
+
+@section('content')
+    <div class="alert alert-danger" role="alert">
+        {{ $message }}
+    </div>
+    <div>
+        <a class="btn btn-secondary" href="{{ route($backTo) }}">Voltar</a>
+    </div>
+@endsection
