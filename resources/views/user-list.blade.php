@@ -30,9 +30,7 @@
                         <li><a class="dropdown-item" href="{{ route('user.edit', ['id' => $id]) }}">Editar Usuário</a></li>
                         <li><a class="dropdown-item" href="{{ route('user.delete', ['id' => $id]) }}">Remover Usuário</a></li>
                         <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="{{ route('entry.create', ['id' => $id, 'tipo' => 'E']) }}">Registrar Entrada</a></li>
-                        <li><a class="dropdown-item" href="{{ route('entry.create', ['id' => $id, 'tipo' => 'S']) }}">Registrar Saída</a></li>
-                        <li><a class="dropdown-item" href="{{ route('entry.index' , ['id' => $id]) }}">Listar Registros</a></li>
+                        <li><a class="dropdown-item" href="{{ route('entry.index' , ['id' => $id]) }}">Relatório de Acessos</a></li>
                     </ul>
                 </div>
                     

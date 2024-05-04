@@ -6,8 +6,17 @@
 
 @section('content')
 
-    <div>
+    <div class="d-flex gap-3">
         <a class="btn btn-secondary" href="{{ route('user.index') }}">Voltar</a>
+        <div class="dropdown">
+            <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                Ferramentas
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                <li><a class="dropdown-item" href="{{ route('entry.create', ['id' => $id, 'tipo' => 'E']) }}">Registrar Entrada</a></li>
+                <li><a class="dropdown-item" href="{{ route('entry.create', ['id' => $id, 'tipo' => 'S']) }}">Registrar Saída</a></li>
+            </ul>
+        </div>
     </div>
     <table class="table table-striped table-hover">
         <thead>

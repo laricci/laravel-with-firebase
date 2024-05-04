@@ -14,6 +14,7 @@ class EntryController extends Controller
         $user = $this->connect()->getReference('users')->getChild($id)->getValue();
 
         return view('entry-list')->with([
+            'id'     => $id,
             'entrys' => is_array($data) ? $data : [],
             'user'   => is_array($user) ? $user : []
         ]);
@@ -33,7 +34,8 @@ class EntryController extends Controller
             
             return view('error')->with([
                 'message' => "O último registro do usuário já é '$tipo'.",
-                'backTo'  => 'user.index'
+                'backTo'  => 'entry.index',
+                'params'  => ['id' => $id]
             ]);
 
         } 
@@ -44,6 +46,6 @@ class EntryController extends Controller
             'tipo' => $tipo
         ]);
         
-        return redirect()->route('user.index');
+        return redirect()->route('entry.index', ['id' => $id]);
     }
 }

@@ -38,11 +38,6 @@ class UserController extends Controller
         return redirect()->route('user.index');
     }
 
-    public function read($id)
-    {
-        
-    }
-
     public function update($id, Request $request)
     {
         $this->connect()->getReference('users/' . $id)->update($request->except(['_token', '_method']));

@@ -9,6 +9,6 @@
         {{ $message }}
     </div>
     <div>
-        <a class="btn btn-secondary" href="{{ route($backTo) }}">Voltar</a>
+        <a class="btn btn-secondary" href="{{ route($backTo, $params) }}">Voltar</a>
     </div>
 @endsection
