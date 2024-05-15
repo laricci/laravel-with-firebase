@@ -33,7 +33,25 @@ class UserController extends Controller
 
     public function create(Request $request)
     {
-        $this->connect()->getReference('users')->push($request->except(['_token']));
+        $postData = $request->all();
+
+        if (!isset($postData['id']) || trim($postData['id']) == '') {
+            return view('error')->with([
+                'message' => "A identificação é obrigatória",
+                'backTo'  => 'user.add'
+            ]);
+        }
+
+        $data = $this->connect()->getReference('users')->getChild($postData['id'])->getValue();
+
+        if (!is_null($data)) {
+            return view('error')->with([
+                'message' => "Já existe um usuário com essa identificação",
+                'backTo'  => 'user.add'
+            ]);
+        }
+
+        $this->connect()->getReference('users/' . $postData['id'])->set($request->except(['_token']));
 
         return redirect()->route('user.index');
     }

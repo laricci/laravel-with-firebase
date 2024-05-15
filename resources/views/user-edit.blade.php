@@ -11,6 +11,10 @@
     {{ Form::open(['url' => route('user.update', ['id' => $id]) ]) }}
         <div class="d-flex flex-column gap-3">
             <div>
+                <label class="form-label" for="id">Identificação (RFID)</label>
+                <input class="form-control" type="text" name="id" id="id">
+            </div>
+            <div>
                 <label class="form-label" for="usuario">Usuário</label>
                 <input class="form-control" type="text" name="usuario" id="usuario" value="{{ $user['usuario'] }}" readonly>
             </div>
