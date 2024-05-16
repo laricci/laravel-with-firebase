@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 class UserController extends Controller
 {
 
+    /**
+     * Listagem
+     */
     public function index()
     {
         $data = $this->connect()->getReference('users')->getSnapshot()->getValue();
@@ -16,11 +19,17 @@ class UserController extends Controller
         ]);
     }
 
+    /**
+     * Tela de adicionar usuário
+     */
     public function add()
     {
         return view('user-add');
     }
 
+    /**
+     * Tela de Editar Usuário
+     */
     public function edit($id)
     {
         $data = $this->connect()->getReference('users')->getChild($id)->getValue();
@@ -31,6 +40,9 @@ class UserController extends Controller
         ]);
     }
 
+    /**
+     * Cria um usuário
+     */
     public function create(Request $request)
     {
         $postData = $request->all();
@@ -56,6 +68,9 @@ class UserController extends Controller
         return redirect()->route('user.index');
     }
 
+    /**
+     * Atualiza um usuário
+     */
     public function update($id, Request $request)
     {
         $this->connect()->getReference('users/' . $id)->update($request->except(['_token', '_method']));
@@ -63,6 +78,9 @@ class UserController extends Controller
         return redirect()->route('user.index');
     }
 
+    /**
+     * Remove um usuário
+     */
     public function delete($id)
     {
         $this->connect()->getReference('users/' . $id)->remove();

@@ -6,20 +6,24 @@ use Illuminate\Http\Request;
 
 class EntryController extends Controller
 {
-    
 
-    public function index($id)
+    /**
+     * Listagem
+     */
+    public function index()
     {
-        $data = $this->connect()->getReference('users/' . $id . '/entrys/')->getSnapshot()->getValue();
-        $user = $this->connect()->getReference('users')->getChild($id)->getValue();
+        $users = $this->connect()->getReference('users')->getSnapshot()->getValue();
+        $data  = $this->connect()->getReference('entrys')->getSnapshot()->getValue();
 
         return view('entry-list')->with([
-            'id'     => $id,
             'entrys' => is_array($data) ? $data : [],
-            'user'   => is_array($user) ? $user : []
+            'users'  => is_array($users) ? $users : [],
         ]);
     }
 
+    /**
+     * Cria um registro de teste
+     */
     public function create($id, $tipo)
     {
         $lastEntry = $this->connect()->getReference('users/' . $id . '/entrys/')

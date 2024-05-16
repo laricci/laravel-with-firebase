@@ -21,7 +21,8 @@ Route::get('/user/{id}/edit', [App\Http\Controllers\UserController::class, 'edit
 Route::post('/user/{id}/update', [App\Http\Controllers\UserController::class, 'update'])->name('user.update');
 Route::post('/user/create', [App\Http\Controllers\UserController::class, 'create'])->name('user.create');
 
-Route::get('/entry/{id}', [App\Http\Controllers\EntryController::class, 'index'])->name('entry.index');
+Route::get('/entry', [App\Http\Controllers\EntryController::class, 'index'])->name('entry.index');
+Route::get('/teste', [App\Http\Controllers\EntryController::class, 'teste'])->name('entry.teste');
 Route::get('/entry/{id}/{tipo}/create', [App\Http\Controllers\EntryController::class, 'create'])->name('entry.create');
 
 // Auth::routes();
